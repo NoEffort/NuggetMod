@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "nuggetmod:allthemodium_block",
+    "nuggetmod:vibranium_block",
+    "nuggetmod:unobtainium_block"
+
+  ]
+}

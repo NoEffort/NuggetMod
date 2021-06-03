@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "uuu",
+    "unu"
+  ],
+  "key": {
+    "u": {
+      "tag": "forge:ingots/unobtainium"
+    },
+    "n": {
+      "item": "minecraft:netherite_helmet"
+    }
+  },
+  "result": {
+    "item": "nuggetmod:unobtainium_helmet"
+  }
+}

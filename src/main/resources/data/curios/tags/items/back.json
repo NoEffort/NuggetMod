@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "nuggetmod:travel_bag_default",
+	"nuggetmod:travel_bag_iron",
+	"nuggetmod:travel_bag_gold",
+	"nuggetmod:travel_bag_diamond"
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "sls",
+    "ici",
+    "lll"
+  ],
+  "key": {
+    "s":{
+      "item": "nuggetmod:reinforced_string"
+    },
+    "l": {
+      "item": "minecraft:leather"
+    },
+    "c": {
+      "tag": "forge:chests/wooden"
+    },
+    "i": {
+      "tag": "forge:ingots/iron"
+    }
+  },
+  "result": {
+    "item": "nuggetmod:travel_bag_iron",
+    "count": 1
+  }
+}

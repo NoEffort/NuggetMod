@@ -1,0 +1,52 @@
+{
+  "item.nuggetmod.drumstick": "Drumstick",
+  "item.nuggetmod.cooked_drumstick": "Cooked Drumstick",
+  "item.nuggetmod.unobtainium_ingot": "Unobtainium Ingot",
+  "item.nuggetmod.unobtainium_nugget": "Unobtainium Nugget",
+  "item.nuggetmod.allthemodium_ingot": "Allthemodium Ingot",
+  "item.nuggetmod.allthemodium_nugget": "Allthemodium Nugget",
+  "item.nuggetmod.vibranium_ingot": "Vibranium Ingot",
+  "item.nuggetmod.vibranium_nugget": "Vibranium Nugget",
+  "item.nuggetmod.reinforced_string": "Reinforced String",
+  "item.nuggetmod.travel_bag_default": "Traveller's Bag",
+  "item.nuggetmod.travel_bag_iron": "Iron Traveller's Bag",
+  "item.nuggetmod.travel_bag_gold": "Golden Traveller's Bag",
+  "item.nuggetmod.travel_bag_diamond": "Diamond Traveller's Bag",
+  "item.nuggetmod.molten_vibranium_bucket": "Molten Vibranium Bucket",
+  "item.nuggetmod.unobtainium_helmet": "Unobtainium Helmet",
+  "item.nuggetmod.unobtainium_chestplate": "Unobtainium Chestplate",
+  "item.nuggetmod.unobtainium_leggings": "Unobtainium Leggings",
+  "item.nuggetmod.unobtainium_boots": "Unobtainium Boots",
+  "item.nuggetmod.travel_bag_upgrade_iron": "Iron Bag Upgrade",
+  "item.nuggetmod.travel_bag_upgrade_gold": "Gold Bag Upgrade",
+  "item.nuggetmod.travel_bag_upgrade_diamond": "Diamond Bag Upgrade",
+
+  "block.nuggetmod.unobtainium_block": "Unobtainium Block",
+  "block.nuggetmod.allthemodium_block": "Allthemodium Block",
+  "block.nuggetmod.vibranium_block": "Vibranium Block",
+  "block.nuggetmod.molten_vibranium_block": "Molten Vibranium",
+  "block.nuggetmod.weather_pedestal": "Weather Pedestal",
+
+  "fluid.nuggetmod.molten_vibranium": "Molten Vibranium",
+
+  "container.nuggetmod.travel_bag": "Traveller's Bag",
+  "container.nuggetmod.weather_pedestal": "Weather Pedestal",
+
+  "enchantment.nuggetmod.upgraded_potentials": "Upgraded Potentials",
+  "enchantment.nuggetmod.upgraded_potentials.desc": "Resets the repair cost for the applied item",
+
+  "tooltip.nuggetmod.piglin_neutral": "Piglins become neutral",
+  "tooltip.nuggetmod.wither_protection": "Immune to wither damage",
+  "tooltip.nuggetmod.magic_protection": "Protects against magic damage",
+  "tooltip.nuggetmod.shulker_protection": "Immune to levitation attacks",
+  "tooltip.nuggetmod.nausea_protection": "Immune to nausea",
+  "tooltip.nuggetmod.elytra_protection": "Protection against crash damage when flying",
+  "tooltip.nuggetmod.fire_protection": "Immune to fire and lava",
+  "tooltip.nuggetmod.water_breathing": "Infinite water breathing",
+  "tooltip.nuggetmod.fall_protection": "No fall damage",
+
+  "key.category.nuggetmod": "Nugget Mod",
+  "key.nuggetmod.open_travel_bag": "Open Traveller's Bag",
+
+  "itemGroup.tab_nuggetmod": "Nugget Mod"
+}

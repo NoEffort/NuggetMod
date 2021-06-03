@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "sls",
+    "dcd",
+    "lll"
+  ],
+  "key": {
+    "s":{
+      "item": "nuggetmod:reinforced_string"
+    },
+    "l": {
+      "item": "minecraft:leather"
+    },
+    "c": {
+      "tag": "forge:chests/wooden"
+    },
+    "d": {
+      "tag": "forge:gems/diamond"
+    }
+  },
+  "result": {
+    "item": "nuggetmod:travel_bag_diamond",
+    "count": 1
+  }
+}

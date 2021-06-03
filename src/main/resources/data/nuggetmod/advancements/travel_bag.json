@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:adventure/root",
+  "display": {
+    "title": {
+      "text": "Away We Go",
+      "obfuscated": false
+    },
+    "description": "Craft any variant of the Traveller's Bag",
+    "icon": {
+      "item": "nuggetmod:travel_bag_default"
+    }
+  },
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "item": [
+          {
+            "item": "nuggetmod:travel_bag_default"
+          },
+          {
+            "item": "nuggetmod:travel_bag_iron"
+          },
+          {
+            "item": "nuggetmod:travel_bag_gold"
+          },
+          {
+            "item": "nuggetmod:travel_bag_diamond"
+          }
+        ]
+      }
+    }
+  }
+}

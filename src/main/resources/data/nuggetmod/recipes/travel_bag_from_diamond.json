@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "nuggetmod:travel_bag_gold"
+    },
+    {
+      "item": "nuggetmod:travel_bag_upgrade_diamond"
+    }
+  ],
+  "result": {
+    "item": "nuggetmod:travel_bag_diamond",
+    "count": 1
+  }
+}

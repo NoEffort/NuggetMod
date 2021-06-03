@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "forge:ingots/allthemodium"
+    },
+    {
+      "tag": "forge:ingots/netherite"
+    },
+    {
+      "tag": "forge:ingots/vibranium"
+    },
+    {
+      "item": "minecraft:dragon_egg"
+    }
+  ],
+  "result": {
+    "item": "nuggetmod:unobtainium_ingot",
+    "count": 1
+  }
+}

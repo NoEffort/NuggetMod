@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "#forge:ingots/allthemodium",
+    "#forge:ingots/vibranium",
+    "#forge:ingots/unobtainium"
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "facing=north": { "model": "nuggetmod:block/weather_pedestal" },
+    "facing=south": { "model": "nuggetmod:block/weather_pedestal", "y": 180 },
+    "facing=east": { "model": "nuggetmod:block/weather_pedestal", "y": 90 },
+    "facing=west": { "model": "nuggetmod:block/weather_pedestal", "y": 270 }
+  }
+}

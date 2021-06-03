@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "ege",
+    "gcg",
+    " g "
+  ],
+  "key": {
+    "e":{
+      "tag": "forge:storage_blocks/emerald"
+    },
+    "g": {
+      "tag": "forge:storage_blocks/gold"
+    },
+    "c": {
+      "item": "minecraft:end_crystal"
+    }
+  },
+  "result": {
+    "item": "minecraft:totem_of_undying",
+    "count": 1
+  }
+}

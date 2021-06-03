@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "nuggetmod:travel_bag_default"
+    },
+    {
+      "item": "nuggetmod:travel_bag_upgrade_iron"
+    }
+  ],
+  "result": {
+    "item": "nuggetmod:travel_bag_iron",
+    "count": 1
+  }
+}

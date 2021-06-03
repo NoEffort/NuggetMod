@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "nuggetmod:drumstick"
+  },
+  "result": "nuggetmod:cooked_drumstick",
+  "experience": 0.35,
+  "cookingtime": 200
+}
