@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "facing=north": { "model": "nuggetmod:block/time_pedestal" },
+    "facing=south": { "model": "nuggetmod:block/time_pedestal", "y": 180 },
+    "facing=east": { "model": "nuggetmod:block/time_pedestal", "y": 90 },
+    "facing=west": { "model": "nuggetmod:block/time_pedestal", "y": 270 }
+  }
+}

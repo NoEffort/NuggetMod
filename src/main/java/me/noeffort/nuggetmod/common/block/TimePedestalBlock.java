@@ -1,7 +1,10 @@
 package me.noeffort.nuggetmod.common.block;
 
+import me.noeffort.nuggetmod.NuggetMod;
+import me.noeffort.nuggetmod.common.capability.world.HasBlock;
 import me.noeffort.nuggetmod.common.capability.world.HasBlockCapability;
 import me.noeffort.nuggetmod.common.capability.world.IHasBlock;
+import me.noeffort.nuggetmod.common.container.TimePedestalContainer;
 import me.noeffort.nuggetmod.common.container.WeatherPedestalContainer;
 import me.noeffort.nuggetmod.core.init.BlockInit;
 import me.noeffort.nuggetmod.core.init.TileEntityTypeInit;
@@ -9,13 +12,17 @@ import me.noeffort.nuggetmod.util.Format;
 import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.spectator.categories.SpectatorDetails;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.entity.player.ServerPlayerEntity;
+import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.inventory.container.Container;
 import net.minecraft.inventory.container.INamedContainerProvider;
 import net.minecraft.item.BlockItemUseContext;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.server.MinecraftServer;
 import net.minecraft.state.DirectionProperty;
 import net.minecraft.state.StateContainer;
 import net.minecraft.state.properties.BlockStateProperties;
@@ -30,15 +37,17 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.ToolType;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.fml.network.NetworkHooks;
+import org.lwjgl.system.CallbackI;
+import slimeknights.mantle.block.InventoryBlock;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
-public class WeatherPedestalBlock extends Block {
+public class TimePedestalBlock extends Block {
 
     private static final DirectionProperty FACING = BlockStateProperties.FACING;
 
-    public WeatherPedestalBlock() {
+    public TimePedestalBlock() {
         super(AbstractBlock.Properties.of(Material.METAL).sound(SoundType.METAL).strength(5.0F)
                 .harvestTool(ToolType.PICKAXE).harvestLevel(2));
         this.defaultBlockState().setValue(FACING, Direction.NORTH);
@@ -52,7 +61,7 @@ public class WeatherPedestalBlock extends Block {
     @Nullable
     @Override
     public TileEntity createTileEntity(BlockState state, IBlockReader world) {
-        return TileEntityTypeInit.WEATHER_PEDESTAL_TILE_ENTITY.get().create();
+        return TileEntityTypeInit.TIME_PEDESTAL_TILE_ENTITY.get().create();
     }
 
     @Override
@@ -101,7 +110,7 @@ public class WeatherPedestalBlock extends Block {
                 world.setBlock(pos, Blocks.AIR.defaultBlockState(), -1);
                 PlayerEntity player = Minecraft.getInstance().player;
                 if(player != null && !player.isCreative())
-                    player.setItemInHand(Hand.MAIN_HAND, new ItemStack(BlockInit.WEATHER_PEDESTAL.get()));
+                    player.setItemInHand(Hand.MAIN_HAND, new ItemStack(BlockInit.TIME_PEDESTAL.get()));
                 return;
             }
             HasBlockCapability.addBlockInfo(world, name);
@@ -131,13 +140,13 @@ public class WeatherPedestalBlock extends Block {
         @Override
         @Nonnull
         public ITextComponent getDisplayName() {
-            return Format.translate(Format.Type.CONTAINER, "weather_pedestal");
+            return Format.translate(Format.Type.CONTAINER, "time_pedestal");
         }
 
         @Nullable
         @Override
         public Container createMenu(int id, @Nonnull PlayerInventory inventory, @Nonnull PlayerEntity player) {
-            return new WeatherPedestalContainer(id, inventory);
+            return new TimePedestalContainer(id, inventory);
         }
 
     }

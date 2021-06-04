@@ -26,11 +26,13 @@
   "block.nuggetmod.vibranium_block": "Vibranium Block",
   "block.nuggetmod.molten_vibranium_block": "Molten Vibranium",
   "block.nuggetmod.weather_pedestal": "Weather Pedestal",
+  "block.nuggetmod.time_pedestal": "Time Pedestal",
 
   "fluid.nuggetmod.molten_vibranium": "Molten Vibranium",
 
   "container.nuggetmod.travel_bag": "Traveller's Bag",
   "container.nuggetmod.weather_pedestal": "Weather Pedestal",
+  "container.nuggetmod.time_pedestal": "Time Pedestal",
 
   "enchantment.nuggetmod.upgraded_potentials": "Upgraded Potentials",
   "enchantment.nuggetmod.upgraded_potentials.desc": "Resets the repair cost for the applied item",

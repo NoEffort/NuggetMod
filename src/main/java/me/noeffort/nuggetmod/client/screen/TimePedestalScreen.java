@@ -3,8 +3,11 @@ package me.noeffort.nuggetmod.client.screen;
 import com.mojang.blaze3d.matrix.MatrixStack;
 import com.mojang.blaze3d.systems.RenderSystem;
 import me.noeffort.nuggetmod.NuggetMod;
+import me.noeffort.nuggetmod.common.container.TimePedestalContainer;
 import me.noeffort.nuggetmod.common.container.WeatherPedestalContainer;
+import me.noeffort.nuggetmod.common.tileentity.TimePedestalTileEntity;
 import me.noeffort.nuggetmod.common.tileentity.WeatherPedestalTileEntity;
+import me.noeffort.nuggetmod.core.network.TimePedestalUpdateMessage;
 import me.noeffort.nuggetmod.core.network.WeatherPedestalUpdateMessage;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screen.inventory.ContainerScreen;
@@ -20,14 +23,14 @@ import net.minecraft.util.text.TextFormatting;
 import javax.annotation.Nonnull;
 import java.util.UUID;
 
-public class WeatherPedestalScreen extends ContainerScreen<WeatherPedestalContainer> {
+public class TimePedestalScreen extends ContainerScreen<TimePedestalContainer> {
 
     private final ResourceLocation screen;
     private final PlayerEntity player;
 
-    public WeatherPedestalScreen(WeatherPedestalContainer container, PlayerInventory inventory, ITextComponent title) {
+    public TimePedestalScreen(TimePedestalContainer container, PlayerInventory inventory, ITextComponent title) {
         super(container, inventory, title);
-        this.screen = NuggetMod.location("textures/gui/weather_pedestal.png");
+        this.screen = NuggetMod.location("textures/gui/time_pedestal.png");
         this.player = inventory.player;
 
         this.imageWidth = 176;
@@ -38,14 +41,11 @@ public class WeatherPedestalScreen extends ContainerScreen<WeatherPedestalContai
     protected void init() {
         super.init();
         this.addButton(this.placeAt(new ImageButton(0, 0, 50, 50, 0, 0, 0,
-                NuggetMod.location("textures/gui/buttons/clear.png"), 50, 50, (b) ->
-                this.update(WeatherPedestalTileEntity.Weather.CLEAR)), 8, 18));
+                NuggetMod.location("textures/gui/buttons/day.png"), 50, 50, (b) ->
+                this.update(TimePedestalTileEntity.Time.DAY)), 8, 18));
         this.addButton(this.placeAt(new ImageButton(0, 0, 50, 50, 0, 0, 0,
-                NuggetMod.location("textures/gui/buttons/rain.png"), 50, 50, (b) ->
-                this.update(WeatherPedestalTileEntity.Weather.RAIN)), 63, 18));
-        this.addButton(this.placeAt(new ImageButton(0, 0, 50, 50, 0, 0, 0,
-                NuggetMod.location("textures/gui/buttons/thunder.png"), 50, 50, (b) ->
-                this.update(WeatherPedestalTileEntity.Weather.THUNDER)), 119, 18));
+                NuggetMod.location("textures/gui/buttons/night.png"), 50, 50, (b) ->
+                this.update(TimePedestalTileEntity.Time.NIGHT)), 63, 18));
     }
 
     @Override
@@ -68,10 +68,10 @@ public class WeatherPedestalScreen extends ContainerScreen<WeatherPedestalContai
         return object;
     }
 
-    private void update(WeatherPedestalTileEntity.Weather weather) {
-        NuggetMod.CHANNEL.sendToServer(new WeatherPedestalUpdateMessage(weather));
+    private void update(TimePedestalTileEntity.Time time) {
+        NuggetMod.CHANNEL.sendToServer(new TimePedestalUpdateMessage(time));
         this.player.sendMessage(new StringTextComponent("Weather set to: ").withStyle(TextFormatting.GREEN)
-                .append(new StringTextComponent((weather.name().equals("RAIN")) ? "Rain" : (weather.name().equals("THUNDER"))
+                .append(new StringTextComponent((time.name().equals("RAIN")) ? "Rain" : (time.name().equals("THUNDER"))
                         ? "Thunder" : "Clear").withStyle(TextFormatting.GOLD)), UUID.randomUUID());
     }
 

@@ -1,6 +1,7 @@
 package me.noeffort.nuggetmod.core.init;
 
 import me.noeffort.nuggetmod.NuggetMod;
+import me.noeffort.nuggetmod.common.block.TimePedestalBlock;
 import me.noeffort.nuggetmod.common.block.WeatherPedestalBlock;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
@@ -36,8 +37,8 @@ public class BlockInit {
 
     public static final RegistryObject<WeatherPedestalBlock> WEATHER_PEDESTAL = BLOCKS.register("weather_pedestal",
             WeatherPedestalBlock::new);
-//
-//    public static final RegistryObject<Block> TIME_PEDESTAL = BLOCKS.register("time_pedestal",
-//            TimePedestalBlock::new);
+
+    public static final RegistryObject<TimePedestalBlock> TIME_PEDESTAL = BLOCKS.register("time_pedestal",
+            TimePedestalBlock::new);
 
 }

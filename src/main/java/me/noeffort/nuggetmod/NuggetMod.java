@@ -1,22 +1,31 @@
 package me.noeffort.nuggetmod;
 
+import me.noeffort.nuggetmod.client.screen.TimePedestalScreen;
 import me.noeffort.nuggetmod.client.screen.TravelBagScreen;
 import me.noeffort.nuggetmod.client.screen.WeatherPedestalScreen;
 import me.noeffort.nuggetmod.common.capability.travelbag.TravelBagCapability;
+import me.noeffort.nuggetmod.common.capability.world.HasBlock;
+import me.noeffort.nuggetmod.common.capability.world.HasBlockCapability;
 import me.noeffort.nuggetmod.common.container.TravelBagContainer;
 import me.noeffort.nuggetmod.common.item.TravelBagItem;
 import me.noeffort.nuggetmod.core.init.*;
 import me.noeffort.nuggetmod.core.itemgroup.NuggetItemGroup;
+import me.noeffort.nuggetmod.core.network.TimePedestalUpdateMessage;
 import me.noeffort.nuggetmod.core.network.TravelBagOpenMessage;
 import me.noeffort.nuggetmod.core.network.TravelBagSyncMessage;
+import me.noeffort.nuggetmod.core.network.WeatherPedestalUpdateMessage;
 import net.minecraft.client.gui.ScreenManager;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
+import net.minecraft.loot.LootConditionType;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
+import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.InterModComms;
@@ -91,13 +100,17 @@ public class NuggetMod {
     @SubscribeEvent
     public static void commonSetup(FMLCommonSetupEvent event) {
         TravelBagCapability.register();
+        HasBlockCapability.register();
         CHANNEL.registerMessage(0, TravelBagOpenMessage.class, TravelBagOpenMessage::encode, TravelBagOpenMessage::decode, TravelBagOpenMessage::handle);
         CHANNEL.registerMessage(1, TravelBagSyncMessage.class, TravelBagSyncMessage::encode, TravelBagSyncMessage::decode, TravelBagSyncMessage::handle);
+        CHANNEL.registerMessage(2, WeatherPedestalUpdateMessage.class, WeatherPedestalUpdateMessage::encode, WeatherPedestalUpdateMessage::decode, WeatherPedestalUpdateMessage::handle);
+        CHANNEL.registerMessage(3, TimePedestalUpdateMessage.class, TimePedestalUpdateMessage::encode, TimePedestalUpdateMessage::decode, TimePedestalUpdateMessage::handle);
     }
 
     @SubscribeEvent
     public static void clientSetup(FMLClientSetupEvent event) {
         ScreenManager.register(ContainerTypeInit.WEATHER_PEDESTAL_CONTAINER_TYPE.get(), WeatherPedestalScreen::new);
+        ScreenManager.register(ContainerTypeInit.TIME_PEDESTAL_CONTAINER_TYPE.get(), TimePedestalScreen::new);
         for(TravelBagItem.Type type : TravelBagItem.Type.values()) {
             ScreenManager.register(ContainerTypeInit.getTravelBagContainer(type), (TravelBagContainer c, PlayerInventory i, ITextComponent t) ->
                     new TravelBagScreen(c, i, t, type));

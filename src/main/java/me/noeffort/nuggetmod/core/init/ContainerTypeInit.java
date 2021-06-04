@@ -1,6 +1,7 @@
 package me.noeffort.nuggetmod.core.init;
 
 import me.noeffort.nuggetmod.NuggetMod;
+import me.noeffort.nuggetmod.common.container.TimePedestalContainer;
 import me.noeffort.nuggetmod.common.container.TravelBagContainer;
 import me.noeffort.nuggetmod.common.container.WeatherPedestalContainer;
 import me.noeffort.nuggetmod.common.item.TravelBagItem;
@@ -27,6 +28,10 @@ public class ContainerTypeInit {
     public static final RegistryObject<ContainerType<WeatherPedestalContainer>> WEATHER_PEDESTAL_CONTAINER_TYPE =
             CONTAINER_TYPES.register("weather_pedestal", () ->
                     IForgeContainerType.create(WeatherPedestalContainer::from));
+
+    public static final RegistryObject<ContainerType<TimePedestalContainer>> TIME_PEDESTAL_CONTAINER_TYPE =
+            CONTAINER_TYPES.register("time_pedestal", () ->
+                    IForgeContainerType.create(TimePedestalContainer::from));
 
     private static final Map<TravelBagItem.Type, ContainerType<TravelBagContainer>> TRAVEL_BAG_MAP = new HashMap<>();
 

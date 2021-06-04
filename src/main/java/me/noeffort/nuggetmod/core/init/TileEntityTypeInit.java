@@ -1,7 +1,7 @@
 package me.noeffort.nuggetmod.core.init;
 
 import me.noeffort.nuggetmod.NuggetMod;
-import me.noeffort.nuggetmod.common.block.WeatherPedestalBlock;
+import me.noeffort.nuggetmod.common.tileentity.TimePedestalTileEntity;
 import me.noeffort.nuggetmod.common.tileentity.WeatherPedestalTileEntity;
 import net.minecraft.tileentity.TileEntityType;
 import net.minecraftforge.fml.RegistryObject;
@@ -16,5 +16,9 @@ public class TileEntityTypeInit {
     public static RegistryObject<TileEntityType<WeatherPedestalTileEntity>> WEATHER_PEDESTAL_TILE_ENTITY =
             TILE_ENTITY_TYPES.register("weather_pedestal", () -> TileEntityType.Builder.of(WeatherPedestalTileEntity::new,
                     BlockInit.WEATHER_PEDESTAL.get()).build(null));
+
+    public static RegistryObject<TileEntityType<TimePedestalTileEntity>> TIME_PEDESTAL_TILE_ENTITY =
+            TILE_ENTITY_TYPES.register("time_pedestal", () -> TileEntityType.Builder.of(TimePedestalTileEntity::new,
+                    BlockInit.TIME_PEDESTAL.get()).build(null));
 
 }

@@ -12,34 +12,34 @@ import net.minecraft.tileentity.TileEntityType;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
-public class WeatherPedestalTileEntity extends TileEntity implements ITickableTileEntity {
+public class TimePedestalTileEntity extends TileEntity implements ITickableTileEntity {
 
-    private Weather weather = Weather.CLEAR;
+    private Time time = Time.DAY;
 
-    public WeatherPedestalTileEntity() {
-        this(TileEntityTypeInit.WEATHER_PEDESTAL_TILE_ENTITY.get());
+    public TimePedestalTileEntity() {
+        this(TileEntityTypeInit.TIME_PEDESTAL_TILE_ENTITY.get());
     }
 
-    public WeatherPedestalTileEntity(TileEntityType<?> type) {
+    public TimePedestalTileEntity(TileEntityType<?> type) {
         super(type);
     }
 
-    public void setWeather(Weather weather) {
-        this.weather = weather;
+    public void setTime(Time time) {
+        this.time = time;
     }
 
     @Nonnull
     @Override
     public CompoundNBT save(@Nonnull CompoundNBT nbt) {
         nbt = super.save(nbt);
-        nbt.putString("Weather", this.weather.name());
+        nbt.putString("Time", time.name());
         return nbt;
     }
 
     @Override
     public void load(@Nonnull BlockState state, @Nonnull CompoundNBT nbt) {
         super.load(state, nbt);
-        this.weather = Weather.valueOf(nbt.getString("Weather"));
+        this.time = Time.valueOf(nbt.getString("Time"));
     }
 
     @Nullable
@@ -67,27 +67,18 @@ public class WeatherPedestalTileEntity extends TileEntity implements ITickableTi
     @Override
     public void tick() {
         if(this.level == null) throw new IllegalStateException("Block cannot be in a null world!");
-        switch(this.weather) {
-            case RAIN:
-                this.level.setRainLevel(1.0F);
-                break;
-            case THUNDER:
-                this.level.setRainLevel(1.0F);
-                this.level.setThunderLevel(1.0F);
-                break;
-            case CLEAR:
+        switch(this.time) {
+            case NIGHT:
+            case DAY:
             default:
-                this.level.setRainLevel(0.0F);
-                this.level.setThunderLevel(0.0F);
-                break;
+                this.level.getDayTime();
         }
     }
 
-    public enum Weather {
+    public enum Time {
 
-        CLEAR,
-        RAIN,
-        THUNDER
+        DAY,
+        NIGHT
 
     }
 
