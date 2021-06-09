@@ -1,15 +1,12 @@
 package me.noeffort.nuggetmod.common.item;
 
-import me.noeffort.nuggetmod.NuggetMod;
 import me.noeffort.nuggetmod.common.capability.travelbag.ITravelBag;
 import me.noeffort.nuggetmod.common.capability.travelbag.TravelBag;
 import me.noeffort.nuggetmod.common.capability.travelbag.TravelBagCapability;
 import me.noeffort.nuggetmod.common.container.TravelBagContainer;
 import me.noeffort.nuggetmod.common.item.variants.ItemVariantGroup;
 import me.noeffort.nuggetmod.core.init.ItemInit;
-import me.noeffort.nuggetmod.core.network.TravelBagSyncMessage;
 import me.noeffort.nuggetmod.util.Format;
-import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.entity.player.ServerPlayerEntity;
@@ -23,15 +20,12 @@ import net.minecraft.util.Hand;
 import net.minecraft.util.IStringSerializable;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.world.World;
-import net.minecraftforge.common.ForgeMod;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
-import net.minecraftforge.fml.network.NetworkDirection;
 import net.minecraftforge.fml.network.NetworkHooks;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.IItemHandlerModifiable;
 import net.minecraftforge.items.ItemStackHandler;
 import org.apache.commons.lang3.tuple.ImmutableTriple;
-import org.apache.logging.log4j.core.jmx.Server;
 import top.theillusivec4.curios.api.CuriosApi;
 
 import javax.annotation.Nonnull;
@@ -74,11 +68,6 @@ public class TravelBagItem extends Item {
             this.openGui(player, player.getItemInHand(hand), hand);
         }
         return ActionResult.success(player.getItemInHand(hand));
-    }
-
-    public static void sync(ItemStack item, ServerPlayerEntity player) {
-        NuggetMod.CHANNEL.sendTo(new TravelBagSyncMessage(item.serializeNBT()), player.connection.getConnection(),
-                NetworkDirection.PLAY_TO_CLIENT);
     }
 
     public static ItemStack findInCurios(Type type, PlayerEntity player) {

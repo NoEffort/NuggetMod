@@ -1,5 +1,6 @@
 package me.noeffort.nuggetmod.common.container;
 
+import me.noeffort.nuggetmod.NuggetMod;
 import me.noeffort.nuggetmod.common.item.TravelBagItem;
 import me.noeffort.nuggetmod.core.init.ContainerTypeInit;
 import net.minecraft.entity.player.PlayerEntity;
@@ -86,8 +87,6 @@ public class TravelBagContainer extends Container {
         if(item.isEmpty()) {
             slot.set(ItemStack.EMPTY);
         } else {
-            if(player instanceof ServerPlayerEntity)
-                TravelBagItem.sync(TravelBagItem.findInCurios(this.type, player), (ServerPlayerEntity) player);
             slot.setChanged();
         }
 

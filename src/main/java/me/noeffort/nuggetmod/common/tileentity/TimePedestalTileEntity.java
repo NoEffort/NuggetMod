@@ -69,9 +69,10 @@ public class TimePedestalTileEntity extends TileEntity implements ITickableTileE
         if(this.level == null) throw new IllegalStateException("Block cannot be in a null world!");
         switch(this.time) {
             case NIGHT:
+                break;
             case DAY:
             default:
-                this.level.getDayTime();
+                break;
         }
     }
 

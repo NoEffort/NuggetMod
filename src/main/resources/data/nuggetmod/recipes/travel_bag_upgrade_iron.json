@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "www",
+    "wiw",
+    "www"
+  ],
+  "key": {
+    "w":{
+      "tag": "forge:planks"
+    },
+    "i": {
+      "tag": "forge:ingots/iron"
+    }
+  },
+  "result": {
+    "item": "nuggetmod:travel_bag_upgrade_iron",
+    "count": 1
+  }
+}

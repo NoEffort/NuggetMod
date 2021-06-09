@@ -1,0 +1,6 @@
+{
+  "parent": "nuggetmod:block/creative_wireless_transmitter",
+  "textures": {
+    "cutout": "nuggetmod:blocks/wireless_transmitter/cutouts/light_blue"
+  }
+}

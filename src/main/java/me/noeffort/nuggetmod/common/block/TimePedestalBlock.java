@@ -102,7 +102,7 @@ public class TimePedestalBlock extends Block {
     @Override
     public void onPlace(@Nonnull BlockState placed, @Nonnull World world, @Nonnull BlockPos pos,
                         @Nonnull BlockState removed, boolean cancel) {
-        String name = placed.getBlock().getName().getContents();
+        String name = placed.getBlock().getName().getString();
         LazyOptional<IHasBlock> capability = HasBlockCapability.getBlockPosInfo(world);
         if(capability.isPresent()) {
             IHasBlock block = capability.resolve().get();
@@ -122,7 +122,7 @@ public class TimePedestalBlock extends Block {
     @Override
     public void onRemove(@Nonnull BlockState removed, @Nonnull World world, @Nonnull BlockPos pos,
                          @Nonnull BlockState placed, boolean cancel) {
-        String name = placed.getBlock().getName().getContents();
+        String name = removed.getBlock().getName().getString();
         if(!cancel) {
             HasBlockCapability.removeBlockInfo(world, name);
         }

@@ -1,0 +1,9 @@
+{
+  "required": true,
+  "package": "me.noeffort.nuggetmod.common.refinedstorage.mixin",
+  "compatibilityLevel": "JAVA_8",
+  "mixins": [
+    "MixinNetworkItemManager"
+  ],
+  "minVersion": "0.8"
+}

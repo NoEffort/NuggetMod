@@ -4,6 +4,7 @@ import me.noeffort.nuggetmod.NuggetMod;
 import me.noeffort.nuggetmod.common.item.TravelBagItem;
 import me.noeffort.nuggetmod.common.item.TravelBagUpgradeItem;
 import me.noeffort.nuggetmod.common.item.armor.*;
+import me.noeffort.nuggetmod.common.item.curio.GodCharm;
 import me.noeffort.nuggetmod.common.item.variants.ItemVariantGroup;
 import me.noeffort.nuggetmod.core.itemgroup.NuggetItemGroup;
 import net.minecraft.item.BucketItem;
@@ -67,6 +68,9 @@ public class ItemInit {
     public static final RegistryObject<Item> UNOBTAINIUM_BOOTS = ITEMS.register("unobtainium_boots", () ->
             new UnobtainiumBoots(ArmorMaterial.UNOBTAINIUM, new Item.Properties().tab(NuggetItemGroup.TAB_NUGGET_MOD)
                     .stacksTo(1).fireResistant()));
+
+    public static final RegistryObject<Item> GOD_CHARM = ITEMS.register("god_charm", () ->
+            new GodCharm(new Item.Properties().tab(NuggetItemGroup.TAB_NUGGET_MOD)));
 
     public static class VariantGroups {
 

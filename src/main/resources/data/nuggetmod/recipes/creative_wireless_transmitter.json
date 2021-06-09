@@ -1,0 +1,29 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "mrk",
+    "rwr",
+    "knm"
+  ],
+  "key": {
+    "k":{
+      "item": "projecte:klein_star_omega"
+    },
+    "m": {
+      "item": "projecte:red_matter"
+    },
+    "r": {
+      "item": "refinedstorage:range_upgrade"
+    },
+    "w": {
+      "item": "refinedstorage:wireless_transmitter"
+    },
+    "n": {
+      "item": "minecraft:nether_star"
+    }
+  },
+  "result": {
+    "item": "nuggetmod:creative_wireless_transmitter",
+    "count": 1
+  }
+}

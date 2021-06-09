@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "www",
+    "wgw",
+    "www"
+  ],
+  "key": {
+    "w":{
+      "tag": "forge:planks"
+    },
+    "i": {
+      "tag": "forge:ingots/gold"
+    }
+  },
+  "result": {
+    "item": "nuggetmod:travel_bag_upgrade_gold",
+    "count": 1
+  }
+}

@@ -1,5 +1,6 @@
 package me.noeffort.nuggetmod.common.capability.world;
 
+import me.noeffort.nuggetmod.NuggetMod;
 import me.noeffort.nuggetmod.common.capability.SerializableCapabilityProvider;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.nbt.INBT;

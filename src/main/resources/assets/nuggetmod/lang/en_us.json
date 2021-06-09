@@ -8,10 +8,10 @@
   "item.nuggetmod.vibranium_ingot": "Vibranium Ingot",
   "item.nuggetmod.vibranium_nugget": "Vibranium Nugget",
   "item.nuggetmod.reinforced_string": "Reinforced String",
-  "item.nuggetmod.travel_bag_default": "Traveller's Bag",
-  "item.nuggetmod.travel_bag_iron": "Iron Traveller's Bag",
-  "item.nuggetmod.travel_bag_gold": "Golden Traveller's Bag",
-  "item.nuggetmod.travel_bag_diamond": "Diamond Traveller's Bag",
+  "item.nuggetmod.travel_bag_default": "Traveler's Bag",
+  "item.nuggetmod.travel_bag_iron": "Iron Traveler's Bag",
+  "item.nuggetmod.travel_bag_gold": "Golden Traveler's Bag",
+  "item.nuggetmod.travel_bag_diamond": "Diamond Traveler's Bag",
   "item.nuggetmod.molten_vibranium_bucket": "Molten Vibranium Bucket",
   "item.nuggetmod.unobtainium_helmet": "Unobtainium Helmet",
   "item.nuggetmod.unobtainium_chestplate": "Unobtainium Chestplate",
@@ -20,6 +20,7 @@
   "item.nuggetmod.travel_bag_upgrade_iron": "Iron Bag Upgrade",
   "item.nuggetmod.travel_bag_upgrade_gold": "Gold Bag Upgrade",
   "item.nuggetmod.travel_bag_upgrade_diamond": "Diamond Bag Upgrade",
+  "item.nuggetmod.god_charm": "Charm of God",
 
   "block.nuggetmod.unobtainium_block": "Unobtainium Block",
   "block.nuggetmod.allthemodium_block": "Allthemodium Block",
@@ -27,10 +28,11 @@
   "block.nuggetmod.molten_vibranium_block": "Molten Vibranium",
   "block.nuggetmod.weather_pedestal": "Weather Pedestal",
   "block.nuggetmod.time_pedestal": "Time Pedestal",
+  "block.nuggetmod.creative_wireless_transmitter": "Creative Wireless Transmitter",
 
   "fluid.nuggetmod.molten_vibranium": "Molten Vibranium",
 
-  "container.nuggetmod.travel_bag": "Traveller's Bag",
+  "container.nuggetmod.travel_bag": "Traveler's Bag",
   "container.nuggetmod.weather_pedestal": "Weather Pedestal",
   "container.nuggetmod.time_pedestal": "Time Pedestal",
 
@@ -46,9 +48,10 @@
   "tooltip.nuggetmod.fire_protection": "Immune to fire and lava",
   "tooltip.nuggetmod.water_breathing": "Infinite water breathing",
   "tooltip.nuggetmod.fall_protection": "No fall damage",
+  "tooltip.nuggetmod.god_charm": "\"Damn, that thing\u2019s heavy! That, my friend, is because it\u2019s so full of mercy.\"",
 
   "key.category.nuggetmod": "Nugget Mod",
-  "key.nuggetmod.open_travel_bag": "Open Traveller's Bag",
+  "key.nuggetmod.open_travel_bag": "Open Traveler's Bag",
 
   "itemGroup.tab_nuggetmod": "Nugget Mod"
 }

@@ -1,10 +1,14 @@
 package me.noeffort.nuggetmod.util;
 
+import net.minecraft.client.Minecraft;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.RayTraceContext;
 import net.minecraft.util.math.RayTraceResult;
-import net.minecraft.util.math.vector.Vector3d;
+import top.theillusivec4.curios.api.CuriosApi;
 
 import javax.annotation.Nullable;
 
@@ -17,11 +21,38 @@ public class PlayerHelper {
 
     @Nullable
     public static BlockPos getLookingAt(PlayerEntity player, int distance) {
-        Vector3d path = player.getViewVector(0).scale(distance);
-        Vector3d eye = player.getEyePosition(0);
-        RayTraceResult result = player.level.clip(new RayTraceContext(eye, eye.add(path), RayTraceContext.BlockMode.OUTLINE,
-                RayTraceContext.FluidMode.ANY, null));
-        return result.getType().equals(RayTraceResult.Type.MISS) ? null : new BlockPos(result.getLocation());
+        RayTraceResult ray = Minecraft.getInstance().hitResult;
+
+        if(ray == null) return null;
+
+        double x = ray.getLocation().x;
+        double y = ray.getLocation().y;
+        double z = ray.getLocation().z;
+
+        double xa = player.getLookAngle().x;
+        double ya = player.getLookAngle().y;
+        double za = player.getLookAngle().z;
+
+        if((x % 1 == 0) && xa < 0) x -= 0.01;
+        if((y % 1 == 0) && ya < 0) y -= 0.01;
+        if((z % 1 == 0) && za < 0) z -= 0.01;
+
+        return new BlockPos(x, y, z);
+    }
+
+    public static boolean hasItem(PlayerEntity player, Item item) {
+        return player.inventory.contains(new ItemStack(item)) ||
+                CuriosApi.getCuriosHelper().findEquippedCurio(item, player).isPresent();
+    }
+
+    @Nullable
+    public static PlayerEntity fromEntity(Entity entity) {
+        return (!(entity instanceof LivingEntity)) ? null : fromEntity((LivingEntity) entity);
+    }
+
+    @Nullable
+    public static PlayerEntity fromEntity(LivingEntity living) {
+        return (!(living instanceof PlayerEntity)) ? null : (PlayerEntity) living;
     }
 
 }

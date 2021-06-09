@@ -70,9 +70,9 @@ public class TimePedestalScreen extends ContainerScreen<TimePedestalContainer> {
 
     private void update(TimePedestalTileEntity.Time time) {
         NuggetMod.CHANNEL.sendToServer(new TimePedestalUpdateMessage(time));
-        this.player.sendMessage(new StringTextComponent("Weather set to: ").withStyle(TextFormatting.GREEN)
-                .append(new StringTextComponent((time.name().equals("RAIN")) ? "Rain" : (time.name().equals("THUNDER"))
-                        ? "Thunder" : "Clear").withStyle(TextFormatting.GOLD)), UUID.randomUUID());
+        this.player.sendMessage(new StringTextComponent("Time set to: ").withStyle(TextFormatting.GREEN)
+                .append(new StringTextComponent((time.name().equals("NIGHT")) ? "Night" : "Day")
+                        .withStyle(TextFormatting.GOLD)), UUID.randomUUID());
     }
 
 }

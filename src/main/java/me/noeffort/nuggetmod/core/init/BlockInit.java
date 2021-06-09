@@ -3,6 +3,7 @@ package me.noeffort.nuggetmod.core.init;
 import me.noeffort.nuggetmod.NuggetMod;
 import me.noeffort.nuggetmod.common.block.TimePedestalBlock;
 import me.noeffort.nuggetmod.common.block.WeatherPedestalBlock;
+import me.noeffort.nuggetmod.common.block.refinedstorage.CreativeWirelessTransmitterBlock;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.FlowingFluidBlock;
@@ -40,5 +41,8 @@ public class BlockInit {
 
     public static final RegistryObject<TimePedestalBlock> TIME_PEDESTAL = BLOCKS.register("time_pedestal",
             TimePedestalBlock::new);
+
+    public static final RegistryObject<CreativeWirelessTransmitterBlock> CREATIVE_WIRELESS_TRANSMITTER = BLOCKS.register("creative_wireless_transmitter",
+            CreativeWirelessTransmitterBlock::new);
 
 }

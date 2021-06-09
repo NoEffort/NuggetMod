@@ -1,28 +1,43 @@
 package me.noeffort.nuggetmod;
 
+import com.refinedmods.refinedstorage.api.IRSAPI;
+import com.refinedmods.refinedstorage.api.RSAPIInject;
+import com.refinedmods.refinedstorage.apiimpl.API;
+import com.refinedmods.refinedstorage.apiimpl.network.Network;
+import com.refinedmods.refinedstorage.apiimpl.network.node.NetworkNode;
+import com.refinedmods.refinedstorage.render.BakedModelOverrideRegistry;
+import com.refinedmods.refinedstorage.render.model.FullbrightBakedModel;
+import com.refinedmods.refinedstorage.tile.BaseTile;
+import com.refinedmods.refinedstorage.tile.data.TileDataManager;
 import me.noeffort.nuggetmod.client.screen.TimePedestalScreen;
 import me.noeffort.nuggetmod.client.screen.TravelBagScreen;
 import me.noeffort.nuggetmod.client.screen.WeatherPedestalScreen;
+import me.noeffort.nuggetmod.common.block.refinedstorage.CreativeWirelessTransmitterBlock;
 import me.noeffort.nuggetmod.common.capability.travelbag.TravelBagCapability;
 import me.noeffort.nuggetmod.common.capability.world.HasBlock;
 import me.noeffort.nuggetmod.common.capability.world.HasBlockCapability;
 import me.noeffort.nuggetmod.common.container.TravelBagContainer;
 import me.noeffort.nuggetmod.common.item.TravelBagItem;
+import me.noeffort.nuggetmod.common.refinedstorage.CreativeWirelessTransmitterNetworkNode;
+import me.noeffort.nuggetmod.common.tileentity.refinedstorage.CreativeWirelessTransmitterTileEntity;
 import me.noeffort.nuggetmod.core.init.*;
 import me.noeffort.nuggetmod.core.itemgroup.NuggetItemGroup;
-import me.noeffort.nuggetmod.core.network.TimePedestalUpdateMessage;
-import me.noeffort.nuggetmod.core.network.TravelBagOpenMessage;
-import me.noeffort.nuggetmod.core.network.TravelBagSyncMessage;
-import me.noeffort.nuggetmod.core.network.WeatherPedestalUpdateMessage;
+import me.noeffort.nuggetmod.core.network.*;
+import net.minecraft.block.Block;
 import net.minecraft.client.gui.ScreenManager;
+import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.RenderTypeLookup;
+import net.minecraft.command.FunctionObject;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.loot.LootConditionType;
+import net.minecraft.tileentity.TileEntityType;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.common.extensions.IForgeTileEntity;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
@@ -61,6 +76,9 @@ public class NuggetMod {
             NETWORK_VERSION::equals
     );
 
+    @RSAPIInject
+    public static final IRSAPI REFINED_STORAGE = API.instance();
+
     public NuggetMod() {
         IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
 
@@ -76,7 +94,7 @@ public class NuggetMod {
 
     @SubscribeEvent
     public static void enqueueIMC(final InterModEnqueueEvent event) {
-        SlotTypePreset[] slots = { SlotTypePreset.BACK };
+        SlotTypePreset[] slots = { SlotTypePreset.BACK, SlotTypePreset.CHARM, SlotTypePreset.CHARM };
         List<SlotTypeMessage.Builder> builders = Arrays.stream(slots)
                 .map(SlotTypePreset::getMessageBuilder)
                 .collect(Collectors.toList());
@@ -101,10 +119,17 @@ public class NuggetMod {
     public static void commonSetup(FMLCommonSetupEvent event) {
         TravelBagCapability.register();
         HasBlockCapability.register();
+
         CHANNEL.registerMessage(0, TravelBagOpenMessage.class, TravelBagOpenMessage::encode, TravelBagOpenMessage::decode, TravelBagOpenMessage::handle);
-        CHANNEL.registerMessage(1, TravelBagSyncMessage.class, TravelBagSyncMessage::encode, TravelBagSyncMessage::decode, TravelBagSyncMessage::handle);
-        CHANNEL.registerMessage(2, WeatherPedestalUpdateMessage.class, WeatherPedestalUpdateMessage::encode, WeatherPedestalUpdateMessage::decode, WeatherPedestalUpdateMessage::handle);
-        CHANNEL.registerMessage(3, TimePedestalUpdateMessage.class, TimePedestalUpdateMessage::encode, TimePedestalUpdateMessage::decode, TimePedestalUpdateMessage::handle);
+        CHANNEL.registerMessage(1, WeatherPedestalUpdateMessage.class, WeatherPedestalUpdateMessage::encode, WeatherPedestalUpdateMessage::decode, WeatherPedestalUpdateMessage::handle);
+        CHANNEL.registerMessage(2, TimePedestalUpdateMessage.class, TimePedestalUpdateMessage::encode, TimePedestalUpdateMessage::decode, TimePedestalUpdateMessage::handle);
+        CHANNEL.registerMessage(3, PickBlockMessage.class, PickBlockMessage::encode, PickBlockMessage::decode, PickBlockMessage::handle);
+
+        REFINED_STORAGE.getNetworkNodeRegistry().add(CreativeWirelessTransmitterNetworkNode.NODE_ID, (tag, world, pos) -> {
+            NetworkNode node = new CreativeWirelessTransmitterNetworkNode(world, pos);
+            node.read(tag);
+            return node;
+        });
     }
 
     @SubscribeEvent
@@ -116,7 +141,8 @@ public class NuggetMod {
                     new TravelBagScreen(c, i, t, type));
         }
 
-        ClientRegistry.registerKeyBinding(KeybindInit.OPEN_TRAVEL_BAG);
+        RenderTypeLookup.setRenderLayer(BlockInit.CREATIVE_WIRELESS_TRANSMITTER.get(), RenderType.cutout());
+        // ClientRegistry.registerKeyBinding(KeybindInit.OPEN_TRAVEL_BAG);
     }
 
     public static ResourceLocation location(String location) {

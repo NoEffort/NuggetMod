@@ -18,7 +18,8 @@ public class Format {
         ENCHANTMENT("enchantment"),
         ITEM_GROUP("itemGroup"),
         TOOLTIP("tooltip"),
-        KEY("key")
+        KEY("key"),
+        MISC("misc")
         ;
 
         private final String prefix;
